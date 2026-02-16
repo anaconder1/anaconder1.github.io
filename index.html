@@ -2,14 +2,30 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Pi & Business Hausa AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anconder Pi App</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
 
 <body style="background:#1e1e1e;color:white;text-align:center;padding-top:100px;font-family:sans-serif;">
 
-<h1>ANCONDER PI WORKING ✅</h1>
-<p>Idan wannan ya fito, Pi Browser yana aiki.</p>
+<h1>ANCONDER PI APP 🚀</h1>
+<button onclick="login()" style="padding:10px 20px;font-size:18px;">
+Login with Pi
+</button>
+
+<script>
+  Pi.init({ version: "2.0" });
+
+  async function login() {
+    try {
+      const scopes = ['username'];
+      const auth = await Pi.authenticate(scopes);
+      alert("Sannu " + auth.user.username);
+    } catch (err) {
+      alert("Login ya fadi");
+    }
+  }
+</script>
 
 </body>
 </html>
