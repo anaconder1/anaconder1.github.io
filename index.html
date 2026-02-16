@@ -15,14 +15,14 @@
     Pi.init({ version: "2.0", sandbox: true });
 
     async function login() {
-      try {
-        const scopes = ['username', 'payments'];
-        const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
-        alert("Welcome " + auth.user.username);
-      } catch (err) {
-        alert("Login failed");
-        console.log(err);
-      }
+  try {
+    const scopes = ['username', 'payments'];
+    const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+    alert("Welcome " + auth.user.username);
+  } catch (err) {
+    alert("Login failed");
+    console.log(err);
+  }
     }
 
     function onIncompletePaymentFound(payment) {
