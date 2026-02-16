@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anconder Pi App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <style>
+    body{
+      background: linear-gradient(135deg,#1e1e2f,#2c2c54);
+      color:white;
+      font-family: Arial, sans-serif;
+      text-align:center;
+      padding:40px;
+    }
+    .card{
+      background:#2f2f4f;
+      padding:30px;
+      border-radius:15px;
+      box-shadow:0 0 20px rgba(0,0,0,0.5);
+    }
+    button{
+      background:#ffcc00;
+      border:none;
+      padding:12px 25px;
+      font-size:16px;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:20px;
+    }
+    button:hover{
+      background:#ffaa00;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🚀 Anconder Pi Network App</h1>
+  <p id="welcome">Loading...</p>
+  <button onclick="login()">Login with Pi</button>
+</div>
+
+<script>
+  Pi.init({ version: "2.0" });
+
+  async function login(){
+    try{
+      const scopes = ['username','payments'];
+      const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+      document.getElementById("welcome").innerHTML =
+        "Welcome " + auth.user.username + " 🎉";
+    }catch(e){
+      alert("Login failed");
+    }
+  }
+
+  function onIncompletePaymentFound(payment){
+    console.log(payment);
+  }
+</script>
+
+</body>
+</html>
