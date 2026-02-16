@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Pi Web App</title>
+  <meta charset="UTF-8">
+  <title>My Pi App</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
+
 <body>
-    <h1>Congratulations 🎉</h1>
-    <p>Your GitHub Pages is working!</p>
+  <h2>Welcome to My Pi App 🚀</h2>
+  <button onclick="login()">Login with Pi</button>
+
+  <script>
+    Pi.init({ version: "2.0" });
+
+    async function login() {
+      try {
+        const scopes = ['username', 'payments'];
+        const auth = await Pi.authenticate(scopes);
+        alert("Welcome " + auth.user.username);
+      } catch (err) {
+        alert("Login failed");
+      }
+    }
+  </script>
 </body>
 </html>
