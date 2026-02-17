@@ -17,9 +17,13 @@
     async function login() {
       try {
         const scopes = ['username', 'payments'];
-        const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+        const auth = await Pi.authenticate(...)
 
-        document.body.innerHTML += "<h3>Welcome anconder 🚀</h3>";
+        document.body.innerHTML = `
+  <h2>Welcome to My Pi App 🚀</h2>
+  <h3 style="color: green;">Welcome anconder 🚀</h3>
+  <p>Login Successful ✅</p>
+`;
 
       } catch (err) {
         alert("Login failed");
