@@ -18,7 +18,7 @@
   try {
     const scopes = ['username', 'payments'];
     const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
-    alert("Welcome " + auth.user.username);
+    document.body.innerHTML += "<h3>Welcome " + auth.user.username + "</h3>";
   } catch (err) {
     alert("Login failed");
     console.log(err);
