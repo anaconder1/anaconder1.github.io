@@ -3,20 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>My Pi App</title>
-  <button onclick="login()">Login with Pi</button>
 
-<script>
-async function login() {
-  try {
-    const scopes = ['username'];
-    const auth = await Pi.authenticate(scopes, function(payment) {});
-    alert("Welcome " + auth.user.username);
-  } catch (error) {
-    console.error(error);
-  }
-}
-</script>
+  <!-- Pi SDK -->
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
+
 <body style="text-align:center; margin-top:100px; font-family:sans-serif;">
 
   <h1>Welcome to My Pi App 🚀</h1>
@@ -27,11 +18,12 @@ async function login() {
 
     async function login() {
       try {
-        const scopes = ['username', 'payments'];
+        const scopes = ['username'];
         const auth = await Pi.authenticate(scopes);
         alert("Welcome " + auth.user.username);
       } catch (err) {
         alert("Login failed");
+        console.error(err);
       }
     }
   </script>
