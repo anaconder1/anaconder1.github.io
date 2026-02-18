@@ -9,30 +9,28 @@
 <body>
 
   <h2>Welcome to My Pi App 🚀</h2>
+  <button oncli<!DOCTYPE html>
+<html>
+<head>
+  <title>Pi App</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+</head>
+<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
+
+  <h1>Welcome to My Pi App</h1>
   <button onclick="login()">Login with Pi</button>
 
   <script>
-    Pi.init({ version: "2.0", sandbox: true });
+    Pi.init({ version: "2.0" });
 
     async function login() {
       try {
         const scopes = ['username', 'payments'];
-        const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
-
-        document.body.innerHTML = `
-  <h2>Welcome to My Pi App 🚀</h2>
-  <h3 style="color: green;">Welcome anconder 🚀</h3>
-  <p>Login Successful ✅</p>
-`;
-
+        const auth = await Pi.authenticate(scopes);
+        alert("Welcome " + auth.user.username);
       } catch (err) {
         alert("Login failed");
-        console.log(err);
       }
-    }
-
-    function onIncompletePaymentFound(payment) {
-      console.log("Incomplete payment found:", payment);
     }
   </script>
 
